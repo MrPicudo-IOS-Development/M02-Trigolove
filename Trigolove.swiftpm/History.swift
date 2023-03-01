@@ -1,5 +1,6 @@
 import SwiftUI
 
+@available(iOS 16.0, *)
 struct History: View {
     var body: some View {
         NavigationView {
@@ -40,12 +41,23 @@ struct History: View {
                             .frame(width: 180)
                         Spacer()
                     }
+                    
+                    Button {
+                        // Acción del botón...
+                    } label: {
+                        NavigationLink(destination: Part1()) {
+                            Text("Nivel 1")
+                                .font(.title)
+                                .bold()
+                        }
+                    }
                 }
             }
         }
     }
 }
 
+@available(iOS 16.0, *)
 struct Prueba_Previews: PreviewProvider {
     static var previews: some View {
         History()

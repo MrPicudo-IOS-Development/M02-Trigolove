@@ -2,12 +2,23 @@
 
 import SwiftUI
 
+@available(iOS 16.0, *)
 struct Part1: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+    @State private var message = ""
+
+        var body: some View {
+            Canvas { context, size in
+                let formattedText = Text(message).font(.largeTitle).foregroundColor(.red)
+                context.draw(formattedText, in: CGRect(origin: .zero, size: size))
+            }
+            .dropDestination(for: String.self) { items, location in
+                message = items.first ?? ""
+                return true
+            }
+        }
 }
 
+@available(iOS 16.0, *)
 struct Part1_Previews: PreviewProvider {
     static var previews: some View {
         Part1()
